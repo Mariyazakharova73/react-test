@@ -1,0 +1,1 @@
+export { OutLayPage } from './OutLayPage';

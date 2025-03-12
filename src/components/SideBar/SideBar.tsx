@@ -4,7 +4,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Box,
   Divider,
-  Drawer,
   IconButton,
   List,
   ListItem,
@@ -16,7 +15,13 @@ import {
 
 import { FC, useState } from 'react';
 import { DRAWER_WIDTH, SIDEBAR_LIST } from 'src/utils/constants';
-import { StyledBox, StyledStack, StyledTypography, StyledTypographyTitle } from './SideBar.style';
+import {
+  StyledBox,
+  StyledDrawer,
+  StyledStack,
+  StyledTypography,
+  StyledTypographyTitle,
+} from './SideBar.style';
 
 export interface SidebarProps {
   mobileOpen: boolean;
@@ -88,19 +93,12 @@ export const SideBar: FC<SidebarProps> = ({ mobileOpen, handleDrawerTransitionEn
       component="nav"
       sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
     >
-      <Drawer
+      <StyledDrawer
         variant="temporary"
         open={mobileOpen}
         onTransitionEnd={handleDrawerTransitionEnd}
         onClose={closeDrawer}
-        sx={{
-          display: { sm: 'block', md: 'none' },
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: DRAWER_WIDTH,
-            borderRight: '1px solid #414144',
-          },
-        }}
+        sx={{ display: { sm: 'block', md: 'none' } }}
         slotProps={{
           root: {
             keepMounted: true,
@@ -108,21 +106,14 @@ export const SideBar: FC<SidebarProps> = ({ mobileOpen, handleDrawerTransitionEn
         }}
       >
         {drawer}
-      </Drawer>
-      <Drawer
+      </StyledDrawer>
+      <StyledDrawer
         variant="permanent"
-        sx={{
-          display: { xs: 'none', md: 'block' },
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: DRAWER_WIDTH,
-            borderRight: '1px solid #414144',
-          },
-        }}
+        sx={{ display: { xs: 'none', md: 'block' } }}
         open
       >
         {drawer}
-      </Drawer>
+      </StyledDrawer>
     </Box>
   );
 };

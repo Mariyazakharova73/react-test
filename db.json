@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John",
+      "description": "A passionate web developer who loves coding and coffee."
+    },
+    {
+      "id": 2,
+      "name": "Alice",
+      "description": "An experienced graphic designer with a keen eye for detail."
+    },
+    {
+      "id": 3,
+      "name": "Bob",
+      "description": "A data analyst who enjoys finding patterns in large datasets."
+    },
+    {
+      "id": 4,
+      "name": "Emma",
+      "description": "A travel blogger exploring new cultures and cuisines."
+    },
+    {
+      "id": 5,
+      "name": "Michael",
+      "description": "A software engineer with a passion for open-source projects."
+    },
+    {
+      "id": 6,
+      "name": "Sophia",
+      "description": "A digital marketer specializing in social media strategies."
+    },
+    {
+      "id": 7,
+      "name": "William",
+      "description": "A cybersecurity expert dedicated to online safety and privacy."
+    },
+    {
+      "id": 8,
+      "name": "Olivia",
+      "description": "A creative writer working on her first novel."
+    },
+    {
+      "id": 9,
+      "name": "James",
+      "description": "A fitness coach helping people achieve their health goals."
+    },
+    {
+      "id": 10,
+      "name": "Charlotte",
+      "description": "An entrepreneur building innovative tech startups."
+    }
+  ]
+}

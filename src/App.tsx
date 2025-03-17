@@ -1,13 +1,11 @@
-
 import './App.css'
-import { UsersList } from './modules/users/users-list'
+import UserList from './UserList'
 
 function App() {
- 
 
   return (
     <>
-     <UsersList />
+     <UserList />
     </>
   )
 }

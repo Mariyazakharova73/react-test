@@ -1,25 +1,30 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./redux/store";
-import { useAddUserMutation, useGetUsersQuery } from "./redux/usersApi";
-import { deleteUser, User } from "./redux/usersSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./redux/store";
+import { addUser, deleteUser, fetchUsers, User } from "./redux/usersSlice";
 
 const UserList = () => {
-  const { data = [], isLoading } = useGetUsersQuery();
-
-  const [addUser] = useAddUserMutation();
-
   const dispatch = useDispatch<AppDispatch>();
+  const users = useSelector((state: RootState) => state.users.items);
+  // const isLoading = useSelector((state: RootState) => state.users.isLoading);
+  // const error = useSelector((state: RootState) => state.users.error);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleAddUser = async () => {
-    if (name.trim() && description.trim()) {
-      await addUser({ name, description }).unwrap();
-      setName("");
-      setDescription("");
+  // useEffect(() => {
+  //   if (!users.length) {
+  //     dispatch(fetchUsers());
+  //   }
+  // }, [dispatch, users.length]);
+
+  const handleAddUser = () => {
+    if (!name.trim() || !description.trim()) {
+      return; // Игнорируем пустые поля
     }
+    dispatch(addUser({ name, description }));
+    // setName("");
+    // setDescription("");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,9 +32,13 @@ const UserList = () => {
     handleAddUser();
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (error) {
+  //   return <div>Ошибка: {error}</div>;
+  // }
 
   return (
     <div className="p-4 max-w-md mx-auto">
@@ -43,16 +52,16 @@ const UserList = () => {
         />
         <input
           className="border p-2 mr-2"
-          placeholder="Email"
+          placeholder="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="bg-blue-500 text-white p-2" onClick={handleAddUser}>
+        <button type="submit" className="bg-blue-500 text-white p-2">
           Добавить
         </button>
-      </>
+      </form>
       <ul>
-        {data.map((user: User) => (
+        {users.map((user: User) => (
           <li key={user.id} className="flex justify-between border p-2 my-1">
             <span>
               {user.name} ({user.description})

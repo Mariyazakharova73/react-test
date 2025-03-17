@@ -5,10 +5,10 @@ import { usersApi } from './usersApi';
 export const store = configureStore({
   reducer: {
     users: usersReducer,
-    [usersApi.reducerPath]: usersApi.reducer,
+    // [usersApi.reducerPath]: usersApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usersApi.middleware),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(usersApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

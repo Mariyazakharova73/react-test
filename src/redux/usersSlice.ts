@@ -62,44 +62,44 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsers.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
+      // .addCase(fetchUsers.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.items = action.payload;
       })
-      .addCase(fetchUsers.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      })
+      // .addCase(fetchUsers.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload as string;
+      // })
       // addUser
-      .addCase(addUser.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
+      // .addCase(addUser.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
       .addCase(addUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items.push(action.payload);
       })
-      .addCase(addUser.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      })
+      // .addCase(addUser.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload as string;
+      // })
       // deleteUser
-      .addCase(deleteUser.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
+      // .addCase(deleteUser.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = state.items.filter((user) => user.id !== action.payload);
       })
-      .addCase(deleteUser.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      });
+      // .addCase(deleteUser.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload as string;
+      // });
   },
 });
 
